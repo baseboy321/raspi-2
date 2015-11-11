@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import RPi.GPIO as GPIO
+import time
+   
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(26, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(19, GPIO.OUT)
+try:
+   while True:
+      for blink in [13,19,26]: 
+         GPIO.output(blink, 1)
+         time.sleep(1)
+         GPIO.output(blink, 0)
+
+
+#GPIO.output(blink, 1)
+   GPIO.cleanup()
+#print(func)
+except KeyboardInterrupt:
+   GPIO.cleanup()
+   exit()
+

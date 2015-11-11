@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(26, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(27, GPIO.OUT)
+GPIO.setup(21, GPIO.OUT)
+GPIO.setup(4, GPIO.OUT)
+GPIO.setup(27, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(19, GPIO.OUT)
+times = .01
+mul = .05
+try:
+      while True:
+         times += mul
+         for blink in [21,26,19,13,27,17,4,17,27,13,19,26]: 
+            GPIO.output(blink, 1)
+            time.sleep(times)
+            GPIO.output(blink, 0)
+            if times >=.2:
+               mul = -.05
+               times = .2
+            if times <= .02:
+               mul = .05
+               times = .1
+except KeyboardInterrupt:
+   GPIO.setmode(GPIO.BCM)
+   for blink in [26,19,13,21,27,17,4]:
+      GPIO.output(blink, 0)
+   GPIO.cleanup()

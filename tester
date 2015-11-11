@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+import lights as l
+for l in range(5):
+    l.randit_light()
+
+
