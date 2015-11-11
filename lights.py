@@ -11,6 +11,7 @@ pins = [26,19,6,13,22,27,17,4]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pins, GPIO.OUT)
 GPIO.setup(21, GPIO.OUT)
+GPIO.setup(5, GPIO.OUT)
 times = .01
 mul = .05
 
@@ -46,19 +47,68 @@ def bounce():
          GPIO.output(blink, 0)
 def coolr():
     GPIO.setmode(GPIO.BCM)
-for n in range(5):
-    for blink in [(6,27),(17,13),(19,4)]:
-        time.sleep(.01)
-        GPIO.output(blink, 1)
-        GPIO.output(blink, 0)
+    for n in range(5):
+        for blink in [(5,27),(17,13),(19,4)]:
+            time.sleep(.36)
+            GPIO.output(blink, 1)
+            time.sleep(.1)
 
 #GPIO.output(blink, 1)
-        time.sleep(.5)
 #print(func)
 def rol2():
     GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(26, GPIO.OUT)
+    GPIO.setup(13, GPIO.OUT)
+    GPIO.setup(27, GPIO.OUT)
+    GPIO.setup(4, GPIO.OUT)
+    GPIO.setup(27, GPIO.OUT)
+    GPIO.setup(17, GPIO.OUT)
+    GPIO.setup(19, GPIO.OUT)
+    while True:
+           for blink in [26,19,13,27,17,4]: 
+                     GPIO.output(blink, 1)
+                     time.sleep(.5)
+                     GPIO.output(blink, 0)
+                     time.sleep(.5)
+                     GPIO.cleanup()
+
+def rot():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(26, GPIO.OUT)
+    GPIO.setup(13, GPIO.OUT)
+    GPIO.setup(19, GPIO.OUT)
+    try:
+        while True:
+            for blink in [13,19,26]: 
+                GPIO.output(blink, 1)
+                time.sleep(1)
+                GPIO.output(blink, 0)
+
+def red():
     
-paterns = [coolr(),bounce(),rol()]
+
+
+
+def num():
+
+
+
+def fal():
+
+
+
+def numb():
+
+#GPIO.output(blink, 1)
+   GPIO.cleanup()
+#print(func)
+except KeyboardInterrupt:
+   GPIO.cleanup()
+   exit()
+paterns = [coolr(),bounce(),rol(),rol2(),rot(),red(),fal(),num(),numb()]
 def randit_light():
    return random.choice(paterns)
+GPIO.setup(21, GPIO.OUT)
 
